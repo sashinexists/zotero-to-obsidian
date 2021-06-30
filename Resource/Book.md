@@ -1,21 +1,21 @@
 ---
-ISBN-13:  {{ISBN-13}}
-title: {{title}}
+ISBN-13:  {{isbn_13}}
+short_title: {{short_title}}
+full_title: {{full_title}}
 aliases:
-  - {{citekey}}
-  - {{title}}
+  - {{id}}
+  - {{short_title}}
   - {{full_title}}
-authors:
-- {{authors}}
+authors: {{authors}}
 publish_date: {{publish_date}}
-tags:
+tags: {{tags}}
 
 ---
-# {{title}}
-Few sentences summary (consider an atomic evergreen note)
+# {{short_title}}
+## Summary
+{{notes}}
 
-%%
-### Links
+
+## Links
 - [Open in Zotero (local)]({{zotero_local_link}})
 - [Open in Zotero (cloud)]({{zotero_cloud_link}})
-%%

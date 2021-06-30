@@ -7,10 +7,11 @@ extern crate serde_derive;
 extern crate chrono;
 
 mod resource_types;
-mod datatypes;
 mod json_parser;
-use datatypes::{Book, createBookFromItem};
+use resource_types::{Book};
 use json_parser::{Item, ZoteroData};
+
+use crate::resource_types::New;
 
 //use serde_json::Value as JsonValue;
 
@@ -29,7 +30,7 @@ fn main() {
     let citations: Vec<Item> = zotero_data.items;
     citations.iter().for_each(|citation| {
         if citation.item_type == "book" {
-            let book:Book = createBookFromItem(citation);
+            let book:Book = Book::new(citation).expect(&format!("failed to parse book: {}",&citation.id));
             println!("{}",book);
         }
     });

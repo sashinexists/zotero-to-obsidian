@@ -143,7 +143,7 @@ fn display_tags(tags:&Vec<Tag>) -> String {
 fn display_notes(notes:&Vec<Note>) -> String {
     let mut output = "".to_string();
     notes.iter().for_each(|note| {
-        output.push_str(&format!("{}\n---\n,", note.content));
+        output.push_str(&format!("{}\n---\n", note.content));
     });
     output.pop();
     output

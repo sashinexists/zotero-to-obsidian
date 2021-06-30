@@ -1,190 +1,76 @@
-use std::fmt;
-use std::fmt::write;
-use std::option;
+use chrono::{Date, TimeZone};
+use std::fs::File;
+
 use std::collections::HashMap;
+use std::fmt::{self, Display};
+use std::fmt::write;
+use std::io::Read;
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ZoteroData {
-    pub collections: HashMap<String, Collection>,
-    pub config: Config,
-    pub items: Vec<Item>
+use regex::{Captures, Regex};
+
+use super::json_parser::{Creator, Item, Note, Tag};
+
+trait IndexableStruct {
+    fn get_field(&self, field: &str) -> Option<String>;
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Config {
-    id: String,
-    label: String,
-    localeDateOrder: String,
-    options: HashMap<String, bool>,
-    preferences: Preferences
-
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Preferences {
-        DOIandURL: String,
-        ascii: String,
-        asciiBibLaTeX: bool,
-        asciiBibTeX: bool,
-        autoAbbrev: bool,
-        autoAbbrevStyle: String,
-        autoExport: String,
-        autoExportDelay: i32,
-        autoExportIdleWait: i32,
-        autoExportPathReplaceDiacritics: bool,
-        autoExportPathReplaceDirSep: String,
-        autoExportPathReplaceSpace: String,
-        autoPinDelay: i32,
-        automaticTags: bool,
-        auxImport: bool,
-        baseAttachmentPath: String,
-        biblatexExtendedDateFormat: bool,
-        biblatexExtendedNameFormat: bool,
-        biblatexExtractEprint: bool,
-        bibtexParticleNoOp: bool,
-        bibtexURL: String,
-        cacheFlushInterval: i32,
-        citeCommand: String,
-        citekeyFold: bool,
-        citekeyFormat: String,
-        citekeySearch: bool,
-        citeprocNoteCitekey: bool,
-        csquotes: String,
-        debugLogDir: String,
-        exportBibTeXStrings: String,
-        exportBraceProtection: bool,
-        exportTitleCase: bool,
-        extraMergeCSL: bool,
-        extraMergeCitekeys: bool,
-        extraMergeTeX: bool,
-        git: String,
-        ignorePostscriptErrors: bool,
-        import: bool,
-        importBibTeXStrings: bool,
-        importCaseProtection: String,
-        importCitationKey: bool,
-        importExtra: bool,
-        importJabRefAbbreviations: bool,
-        importJabRefStrings: bool,
-        importSentenceCase: String,
-        importUnknownTexCommand: String,
-        itemObserverDelay: i32,
-        jabrefFormat: i32,
-        jieba: bool,
-        keyConflictPolicy: String,
-        keyScope: String,
-        kuroshiro: bool,
-        mapMath: String,
-        mapText: String,
-        mapUnicode: String,
-        newTranslatorsAskRestart: bool,
-        parseParticles: bool,
-        patchDates: String,
-        platform: String,
-        postscript: String,
-        postscriptOverride: String,
-        qualityReport: bool,
-        quickCopyEta: String,
-        quickCopyMode: String,
-        quickCopyOrgMode: String,
-        quickCopyPandocBrackets: bool,
-        quickCopySelectLink: String,
-        rawImports: bool,
-        rawLaTag: String,
-        relativeFilePaths: bool,
-        retainCache: bool,
-        scrubDatabase: bool,
-        skipFields: String,
-        skipWords: String,
-        startupProgress: String,
-        strings: String,
-        testing: bool,
-        verbatimFields: String,
-        warnBulkModify: i32,
-        warnTitleCased: bool,
-        workersCache: bool,
-        workersMax: i32
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Collection {
-    collections: Vec<String>,
-    items: Vec<i32>,
-    key: String,
-    name: String,
-    parent: Option<String>
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-
-pub struct Author {
-    pub family: Option<String>,
-    pub given: Option<String>,
-    pub literal: Option<String>
-}
-
-/*impl fmt::Display for Author {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{} {}", self.given, self.family)
-    }
-}*/
-
-// use option type to get every single possible thing you want
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Item {
-    #[serde(rename(serialize = "citationKey", deserialize = "citationKey"))]
+pub struct Book {
     pub id: String,
-    #[serde(rename(serialize = "itemType", deserialize = "itemType"))]
-    pub item_type: String,
-    pub doi: Option<String>,
-    pub title: Option<String>,
-    pub source: Option<String>,
-    #[serde(rename(serialize = "URL", deserialize = "URL"))]
-    pub url: Option<String>,
-    pub author: Option<Vec<Author>>,
-    #[serde(rename(serialize = "ISBN", deserialize = "ISBN"))]
-    pub isbn: Option<String>,
-    #[serde(rename(serialize = "shortTitle", deserialize = "shortTitle"))]
-    pub short_title: Option<String>,
-    pub select: Option<String>,
-    pub uri: Option<String>,
-    #[serde(rename(serialize = "date", deserialize = "date"))]
-    pub published_date: Option<String>
+    pub isbn: String,
+    pub title: String,
+    pub short_title: String,
+    pub authors: Vec<Creator>,
+    pub publish_date: String,
+    pub tags: Vec<Tag>,
+    pub notes: Vec<Note>,
+    pub zotero_cloud_link: String,
+    pub zotero_local_link: String,
 }
 
-impl fmt::Display for Item {
+impl fmt::Display for Book {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        let mut template_file =
+            File::open("Resource/Book.md").expect("Failed to open book template file");
+        let mut book_template = String::new();
+
+        template_file
+            .read_to_string(&mut book_template)
+            .expect("failed to parse book template file");
+
         write!(
             f,
-            "{}",
-            generate_item_string(self)
+            r##"{}"##,
+            book_template
+                .replace("{{title}}", &self.short_title)
+                .replace("{{publish_date}}", &self.publish_date)
+                .replace("{{citekey}}", &self.id)
+                .replace("{{full_title}}", &self.title)
+                .replace("{{zotero_local_link}}", &self.zotero_local_link)
+                .replace("{{zotero_cloud_link}}", &self.zotero_cloud_link)
         )
     }
 }
 
-fn generate_item_string(item:&Item) -> String { 
-    format!(
-        "---\nresouce_type: {}\nID: {}\n{}{}{}{}{}{}{}{}\n---\n",
-        item.item_type, 
-        item.id, 
-        generate_display("URL", &item.url),
-        generate_display("DOI", &item.doi),
-        generate_display("isbn_13", &item.isbn),
-        generate_display("title", &item.title),
-        generate_display("published_date", &item.published_date),
-        generate_display("#title", &item.short_title),
-        generate_display("Open in Zotero (library)", &item.select),
-        generate_display("Open in Zotero (cloud)", &item.uri)
-    )
-}
-
-fn generate_display(label:&str, attr:&Option<String>) -> String { //change this to option string
-    if attr.is_some() {
-        return format!("{}: {}\n",label, attr.clone().unwrap())
+pub fn createBookFromItem(item: &Item) -> Book {
+    Book {
+        id: item.id.clone(),
+        isbn: item.isbn.clone().unwrap(),
+        title: item.title.clone().unwrap(),
+        short_title: item.short_title.clone().unwrap(),
+        authors: item.creators.clone(),
+        publish_date: item.published_date.clone().unwrap(),
+        tags: item.tags.clone(),
+        notes: item.notes.clone(),
+        zotero_cloud_link: item.uri.clone().unwrap(),
+        zotero_local_link: item.select.clone().unwrap(),
     }
-    "".to_string()
 }
 
+pub struct TEDTalk {}
+
+pub struct Article {}
+
+pub struct AcademicPaper {}
 
 #[derive(Serialize, Deserialize, Debug)]
 
@@ -195,7 +81,6 @@ pub struct YoutubeVideo {
     pub item_abstract: String,
     //pub accessed: String,
     pub title: String,
-    pub author: Vec<Author>,
     pub id: String,
     pub language: String,
     pub source: String,
@@ -212,7 +97,3 @@ impl fmt::Display for YoutubeVideo {
         )
     }
 }*/
-
-/*{"URL":"https://www.ted.com/talks/sir_ken_robinson_do_schools_kill_creativity",
-"abstract":"Sir Ken Robinson makes an entertaining and profoundly moving case for creating an education system that nurtures (rather than undermines) creativity.",
-"accessed":{"date-parts":[["2021",6,11]]},"author":[{"family":"Robinson","given":"Sir Ken"}],"id":"robinsonSchoolsKillCreativity","language":"en","source":"www.ted.com","title":"Do schools kill creativity?","type":"motion_picture"}*/

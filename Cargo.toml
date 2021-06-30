@@ -10,3 +10,5 @@ edition = "2018"
 serde = "1.0.126"
 serde_json ="1"
 serde_derive = "1"
+chrono = { version = "0.4", features = ["serde", "rustc-serialize"] }
+regex = "1"

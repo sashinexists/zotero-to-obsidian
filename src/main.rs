@@ -8,10 +8,10 @@ extern crate chrono;
 
 mod resource_types;
 mod json_parser;
-use resource_types::{Book};
+use resource_types::{Book, Books};
 use json_parser::{Item, ZoteroData};
 
-use crate::resource_types::New;
+use crate::resource_types::{New, ResourceList};
 
 //use serde_json::Value as JsonValue;
 
@@ -27,13 +27,16 @@ fn main() {
 
     let zotero_data: ZoteroData = serde_json::from_reader(file).expect("failed to parse json");
 
+    let mut books:Books = Books{book_list:Vec::<Book>::new()};
+
     let citations: Vec<Item> = zotero_data.items;
     citations.iter().for_each(|citation| {
         if citation.item_type == "book" {
             let book:Book = Book::new(citation).expect(&format!("failed to parse book: {}",&citation.id));
-            println!("{}",book);
+            books.add(book);
         }
     });
+    println!("{}", books.print());
 }
 
 // now implement display

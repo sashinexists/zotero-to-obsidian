@@ -12,3 +12,4 @@ serde_json ="1"
 serde_derive = "1"
 chrono = { version = "0.4", features = ["serde", "rustc-serialize"] }
 regex = "1"
+dissolve = "0.2.2"

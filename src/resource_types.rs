@@ -2,6 +2,12 @@ use super::json_parser::{Creator, Item, Note, Tag};
 use std::fmt::{self, Display};
 use std::fs::File;
 use std::io::Read;
+use dissolve::strip_html_tags;
+
+pub trait ResourceList<T> {
+    fn add(& mut self, resource:T) -> ();
+    fn print(&self) -> String;
+}
 
 
 pub trait New<T> {
@@ -71,7 +77,7 @@ impl New<Book> for Book {
                     short_title: item.short_title.clone().expect("Failed to find book short_title"),
                     publish_date: item.published_date.clone().expect("Failed to find book's publish_date"),
                     tags: item.tags.clone(),
-                    notes: item.notes.clone(),
+                    notes: item.notes.clone().into_iter().map(|mut note: Note|{note.content = strip_html_tags(&note.content).concat(); note}).collect(),
                     zotero_cloud_link: item.uri.clone().expect("Failed to get book's zotero cloud link"),
                     zotero_local_link: item.select.clone().expect("Failed to get book's zotero local link"),
                     creators: item.creators.clone()
@@ -82,6 +88,24 @@ impl New<Book> for Book {
         else {
             None
         }     
+    }
+}
+
+pub struct Books {
+    pub book_list: Vec<Book>
+}
+
+impl ResourceList<Book> for Books {
+    fn add(& mut self, book:Book) -> () {
+        self.book_list.push(book);
+    }
+
+    fn print(&self) -> String {
+        let mut output = "".to_string();
+        self.book_list.iter().for_each(|book| {
+            output.push_str(&book.to_string());
+        });
+        output
     }
 }
 
@@ -142,7 +166,7 @@ fn display_tags(tags:&Vec<Tag>) -> String {
 
 fn display_notes(notes:&Vec<Note>) -> String {
     let mut output = "".to_string();
-    notes.iter().for_each(|note| {
+    notes.iter().rev().for_each(|note| { // figure out way to order notes
         output.push_str(&format!("{}\n---\n", note.content));
     });
     output.pop();

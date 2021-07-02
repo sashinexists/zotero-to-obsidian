@@ -1,3 +1,4 @@
+use std::fs;
 use std::fs::File;
 use std::path::Path;
 extern crate serde;
@@ -8,12 +9,8 @@ extern crate chrono;
 
 mod json_parser;
 mod resource_types;
-use json_parser::{Item, ZoteroData};
-use resource_types::{AcademicPaper, AcademicPapers, Article, Articles, Book, Books, ReferenceList, References, TEDTalk, TEDTalks, YoutubeVideo, YoutubeVideos};
-
-use crate::resource_types::{New, ResourceList};
-
-//use serde_json::Value as JsonValue;
+use json_parser::ZoteroData;
+use resource_types::{ReferenceList, References};
 
 //https://medium.com/@nightraiser/read-and-parse-json-with-rust-day-1-of-codedaily-9feab54b29e8
 //https://docs.citationstyles.org/en/stable/specification.html
@@ -27,46 +24,58 @@ fn main() {
 
     let zotero_data: ZoteroData = serde_json::from_reader(file).expect("failed to parse json");
 
-    let mut references = References {
-        articles: Articles {
-            article_list: Vec::<Article>::new(),
-        },
-        books: Books {
-            book_list: Vec::<Book>::new(),
-        },
-        academic_papers: AcademicPapers {
-            academic_paper_list: Vec::<AcademicPaper>::new(),
-        },
-        youtube_videos: YoutubeVideos {
-            youtube_video_list: Vec::<YoutubeVideo>::new(),
-        },
-        ted_talks: TEDTalks {
-            ted_talk_list: Vec::<TEDTalk>::new(),
-        },
-    };
+    let mut references = References::new();
 
     references.populate(&zotero_data.items);
-    
+
     references.print();
 
-    /*
-    let mut academic_papers: AcademicPapers = AcademicPapers {
-        academic_paper_list: Vec::<AcademicPaper>::new(),
-    };
+    fs::create_dir("Resource").expect("failed to create resource directory");
+    fs::create_dir("Resource/Articles").expect("failed to create Resource/Articles directory");
+    fs::create_dir("Resource/AcademicPapers")
+        .expect("failed to create Resource/AcademicPapers directory");
+    fs::create_dir("Resource/Books").expect("failed to create Resource/Books directory");
+    fs::create_dir("Resource/TEDTalks").expect("failed to create Resource/TEDTalks directory");
+    fs::create_dir("Resource/YoutubeVideos")
+        .expect("failed to create resource/YoutubeVideos directory");
 
-
-
-    let citations: Vec<Item> = zotero_data.items;
-    citations.iter().for_each(|citation| {
-        if citation.item_type == "journalArticle"
-            && citation.doi.is_some()
-        {
-            let academic_paper: AcademicPaper = AcademicPaper::new(citation)
-                .expect(&format!("failed to parse Academic Paper: {}", &citation.id));
-            academic_papers.add(academic_paper);
-        }
+    references.articles.article_list.iter().for_each(|article| {
+        fs::write(
+            &format!("Resource/Articles/{}", article.resource_details.id),
+            article.to_string(),
+        )
+        .expect("failed to create article notes");
     });
-    println!("{}", academic_papers.print());*/
-}
 
-// now implement display
+    references.academic_papers.academic_paper_list.iter().for_each(|academic_paper| {
+        fs::write(
+            &format!("Resource/AcademicPapers/{}", academic_paper.resource_details.id),
+            academic_paper.to_string(),
+        )
+        .expect("failed to create academic paper notes");
+    });
+
+    references.books.book_list.iter().for_each(|book| {
+        fs::write(
+            &format!("Resource/Books/{}", book.resource_details.id),
+            book.to_string(),
+        )
+        .expect("failed to create book notes");
+    });
+
+    references.ted_talks.ted_talk_list.iter().for_each(|ted_talk| {
+        fs::write(
+            &format!("Resource/TEDTalks/{}", ted_talk.resource_details.id),
+            ted_talk.to_string(),
+        )
+        .expect("failed to create TED Talk notes");
+    });
+
+    references.youtube_videos.youtube_video_list.iter().for_each(|youtube_video| {
+        fs::write(
+            &format!("Resource/YoutubeVideos/{}", youtube_video.resource_details.id),
+            youtube_video.to_string(),
+        )
+        .expect("failed to create Youtube video notes");
+    });
+}

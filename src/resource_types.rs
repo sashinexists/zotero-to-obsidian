@@ -14,44 +14,85 @@ pub trait New<T> {
 }
 
 pub trait ReferenceList {
-    fn populate(&mut self, items:&Vec<Item>);
+    fn populate(&mut self, items: &Vec<Item>);
     fn print(&self);
+    fn new() -> References;
 }
 
-pub struct References{
-    pub articles:Articles,
+pub struct References {
+    pub articles: Articles,
     pub books: Books,
     pub academic_papers: AcademicPapers,
     pub youtube_videos: YoutubeVideos,
-    pub ted_talks: TEDTalks
+    pub ted_talks: TEDTalks,
 }
 
 impl ReferenceList for References {
-    fn populate(&mut self, items:&Vec<Item>) {
-        items.iter().for_each(|item:&Item| {
-            match &item.item_type[..] {
-                "blogPost" => self.articles.add(Article::new(item).expect("failed to parse blogpost")),
-                "webpage" => self.articles.add(Article::new(item).expect("failed to parse webpage")),
-                "journalArticle" => self.academic_papers.add(AcademicPaper::new(item).expect("failed to parse academic paper")),
-                "videoRecording" => if item.library_catalog.is_some() && item.library_catalog.as_ref().unwrap() == "YouTube" {
-                    self.youtube_videos.add(YoutubeVideo::new(item).expect("failed to parse youtube video"))
-                } else if item.library_catalog.is_some() && item.library_catalog.as_ref().unwrap() == "www.ted.com" {
-                    self.ted_talks.add(TEDTalk::new(item).expect("failed to parse TED talk"))
-                },
-                "book" => if item.isbn.is_some() {self.books.add(Book::new(item).expect("failed to parse book"))},
-                _ => println!("failed to get reference from item")
-            }
-        })
+    fn populate(&mut self, items: &Vec<Item>) {
+        items
+            .iter()
+            .for_each(|item: &Item| match &item.item_type[..] {
+                "blogPost" => self
+                    .articles
+                    .add(Article::new(item).expect("failed to parse blogpost")),
+                "webpage" => self
+                    .articles
+                    .add(Article::new(item).expect("failed to parse webpage")),
+                "journalArticle" => self
+                    .academic_papers
+                    .add(AcademicPaper::new(item).expect("failed to parse academic paper")),
+                "videoRecording" => {
+                    if item.library_catalog.is_some()
+                        && item.library_catalog.as_ref().unwrap() == "YouTube"
+                    {
+                        self.youtube_videos
+                            .add(YoutubeVideo::new(item).expect("failed to parse youtube video"))
+                    } else if item.library_catalog.is_some()
+                        && item.library_catalog.as_ref().unwrap() == "www.ted.com"
+                    {
+                        self.ted_talks
+                            .add(TEDTalk::new(item).expect("failed to parse TED talk"))
+                    }
+                }
+                "book" => {
+                    if item.isbn.is_some() {
+                        self.books
+                            .add(Book::new(item).expect("failed to parse book"))
+                    }
+                }
+                _ => println!("failed to get reference from item"),
+            })
     }
 
     fn print(&self) {
-        println!("\nAcademic Papers\n{}\nArticles\n{}\nBooks\n{}\nYoutube Videos\n{}\nTED Talks\n{}",
-        self.academic_papers.print(),
-        self.articles.print(),
-        self.books.print(),
-        self.youtube_videos.print(),
-        self.ted_talks.print()
-    );  
+        println!(
+            "\nAcademic Papers\n{}\nArticles\n{}\nBooks\n{}\nYoutube Videos\n{}\nTED Talks\n{}",
+            self.academic_papers.print(),
+            self.articles.print(),
+            self.books.print(),
+            self.youtube_videos.print(),
+            self.ted_talks.print()
+        );
+    }
+
+    fn new() -> References {
+        References {
+            articles: Articles {
+                article_list: Vec::<Article>::new(),
+            },
+            books: Books {
+                book_list: Vec::<Book>::new(),
+            },
+            academic_papers: AcademicPapers {
+                academic_paper_list: Vec::<AcademicPaper>::new(),
+            },
+            youtube_videos: YoutubeVideos {
+                youtube_video_list: Vec::<YoutubeVideo>::new(),
+            },
+            ted_talks: TEDTalks {
+                ted_talk_list: Vec::<TEDTalk>::new(),
+            },
+        }
     }
 }
 pub struct Resource {
@@ -74,7 +115,7 @@ pub struct Book {
 impl fmt::Display for Book {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         let mut template_file =
-            File::open("Resource/Book.md").expect("Failed to open book template file");
+            File::open("Templates/Book.md").expect("Failed to open book template file");
         let mut book_template = String::new();
 
         template_file
@@ -212,7 +253,7 @@ impl New<Article> for Article {
 impl fmt::Display for Article {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         let mut template_file =
-            File::open("Resource/Article.md").expect("Failed to open article template file");
+            File::open("Templates/Article.md").expect("Failed to open article template file");
         let mut article_template = String::new();
 
         template_file
@@ -296,9 +337,15 @@ impl New<AcademicPaper> for AcademicPaper {
                         .expect("Failed to get book's zotero local link"),
                     creators: item.creators.clone(),
                 },
-                doi:item.doi.clone().expect("Failed to get paper's DOI"),
-                publish_date:item.published_date.clone().expect("Failed to get paper's published date"),
-                journal: item.journal.clone().expect("Failed to get journal name for paper"),
+                doi: item.doi.clone().expect("Failed to get paper's DOI"),
+                publish_date: item
+                    .published_date
+                    .clone()
+                    .expect("Failed to get paper's published date"),
+                journal: item
+                    .journal
+                    .clone()
+                    .expect("Failed to get journal name for paper"),
             })
         } else {
             None
@@ -308,8 +355,8 @@ impl New<AcademicPaper> for AcademicPaper {
 
 impl fmt::Display for AcademicPaper {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        let mut template_file =
-            File::open("Resource/AcademicPaper.md").expect("Failed to open academic paper template file");
+        let mut template_file = File::open("Templates/AcademicPaper.md")
+            .expect("Failed to open academic paper template file");
         let mut academic_paper_template = String::new();
 
         template_file
@@ -339,13 +386,12 @@ impl fmt::Display for AcademicPaper {
                 .replace("{{doi}}", &self.doi)
                 .replace("{{publish_date}}", &self.publish_date)
                 .replace("{{journal}}", &self.journal)
-
         )
     }
 }
 
 pub struct AcademicPapers {
-    pub academic_paper_list: Vec<AcademicPaper>
+    pub academic_paper_list: Vec<AcademicPaper>,
 }
 
 impl ResourceList<AcademicPaper> for AcademicPapers {
@@ -425,7 +471,7 @@ fn get_youtube_query_string(url: &str) -> Option<String> {
 impl fmt::Display for YoutubeVideo {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         let mut template_file =
-            File::open("Resource/YoutubeVideo.md").expect("Failed to open article template file");
+            File::open("Templates/YoutubeVideo.md").expect("Failed to open article template file");
         let mut youtube_template = String::new();
 
         template_file
@@ -531,7 +577,7 @@ impl New<TEDTalk> for TEDTalk {
 impl fmt::Display for TEDTalk {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         let mut template_file =
-            File::open("Resource/TEDTalk.md").expect("Failed to open TED Talk template file");
+            File::open("Templates/TEDTalk.md").expect("Failed to open TED Talk template file");
         let mut ted_talk_template = String::new();
 
         template_file

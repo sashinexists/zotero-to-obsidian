@@ -25,7 +25,7 @@ pub struct Item {
     pub uri: Option<String>,
     #[serde(rename(serialize = "date", deserialize = "date"))]
     pub published_date: Option<String>,
-    #[serde(rename(serialize = "journalAbbreviation", deserialize = "journalAbbreviation"))]
+    #[serde(rename(serialize = "publicationTitle", deserialize = "publicationTitle"))]
     pub journal: Option<String>,
     pub tags: Vec<Tag>,
     pub notes: Vec<Note>

@@ -12,6 +12,48 @@ pub trait ResourceList<T> {
 pub trait New<T> {
     fn new(item: &Item) -> Option<T>;
 }
+
+pub trait ReferenceList {
+    fn populate(&mut self, items:&Vec<Item>);
+    fn print(&self);
+}
+
+pub struct References{
+    pub articles:Articles,
+    pub books: Books,
+    pub academic_papers: AcademicPapers,
+    pub youtube_videos: YoutubeVideos,
+    pub ted_talks: TEDTalks
+}
+
+impl ReferenceList for References {
+    fn populate(&mut self, items:&Vec<Item>) {
+        items.iter().for_each(|item:&Item| {
+            match &item.item_type[..] {
+                "blogPost" => self.articles.add(Article::new(item).expect("failed to parse blogpost")),
+                "webpage" => self.articles.add(Article::new(item).expect("failed to parse webpage")),
+                "journalArticle" => self.academic_papers.add(AcademicPaper::new(item).expect("failed to parse academic paper")),
+                "videoRecording" => if item.library_catalog.is_some() && item.library_catalog.as_ref().unwrap() == "YouTube" {
+                    self.youtube_videos.add(YoutubeVideo::new(item).expect("failed to parse youtube video"))
+                } else if item.library_catalog.is_some() && item.library_catalog.as_ref().unwrap() == "www.ted.com" {
+                    self.ted_talks.add(TEDTalk::new(item).expect("failed to parse TED talk"))
+                },
+                "book" => if item.isbn.is_some() {self.books.add(Book::new(item).expect("failed to parse book"))},
+                _ => println!("failed to get reference from item")
+            }
+        })
+    }
+
+    fn print(&self) {
+        println!("\nAcademic Papers\n{}\nArticles\n{}\nBooks\n{}\nYoutube Videos\n{}\nTED Talks\n{}",
+        self.academic_papers.print(),
+        self.articles.print(),
+        self.books.print(),
+        self.youtube_videos.print(),
+        self.ted_talks.print()
+    );  
+    }
+}
 pub struct Resource {
     pub id: String,
     pub full_title: String,
@@ -224,6 +266,100 @@ pub struct AcademicPaper {
     pub resource_details: Resource,
     pub doi: String,
     pub journal: String,
+    pub publish_date: String,
+}
+
+impl New<AcademicPaper> for AcademicPaper {
+    fn new(item: &Item) -> Option<AcademicPaper> {
+        if item.doi.is_some() && (item.item_type == "journalArticle") {
+            Some(AcademicPaper {
+                resource_details: Resource {
+                    id: item.id.clone(),
+                    full_title: item.title.clone().expect("Failed to find book title"),
+                    tags: item.tags.clone(),
+                    notes: item
+                        .notes
+                        .clone()
+                        .into_iter()
+                        .map(|mut note: Note| {
+                            note.content = strip_html_tags(&note.content).concat();
+                            note
+                        })
+                        .collect(),
+                    zotero_cloud_link: item
+                        .uri
+                        .clone()
+                        .expect("Failed to get book's zotero cloud link"),
+                    zotero_local_link: item
+                        .select
+                        .clone()
+                        .expect("Failed to get book's zotero local link"),
+                    creators: item.creators.clone(),
+                },
+                doi:item.doi.clone().expect("Failed to get paper's DOI"),
+                publish_date:item.published_date.clone().expect("Failed to get paper's published date"),
+                journal: item.journal.clone().expect("Failed to get journal name for paper"),
+            })
+        } else {
+            None
+        }
+    }
+}
+
+impl fmt::Display for AcademicPaper {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        let mut template_file =
+            File::open("Resource/AcademicPaper.md").expect("Failed to open academic paper template file");
+        let mut academic_paper_template = String::new();
+
+        template_file
+            .read_to_string(&mut academic_paper_template)
+            .expect("failed to parse academic paper template file");
+
+        write!(
+            f,
+            r##"{}"##,
+            academic_paper_template
+                .replace("{{id}}", &self.resource_details.id)
+                .replace("{{full_title}}", &self.resource_details.full_title)
+                .replace(
+                    "{{zotero_local_link}}",
+                    &self.resource_details.zotero_local_link
+                )
+                .replace(
+                    "{{zotero_cloud_link}}",
+                    &self.resource_details.zotero_cloud_link
+                )
+                .replace(
+                    "{{authors}}",
+                    &display_authors(&self.resource_details.creators)
+                )
+                .replace("{{tags}}", &display_tags(&self.resource_details.tags))
+                .replace("{{notes}}", &display_notes(&self.resource_details.notes))
+                .replace("{{doi}}", &self.doi)
+                .replace("{{publish_date}}", &self.publish_date)
+                .replace("{{journal}}", &self.journal)
+
+        )
+    }
+}
+
+pub struct AcademicPapers {
+    pub academic_paper_list: Vec<AcademicPaper>
+}
+
+impl ResourceList<AcademicPaper> for AcademicPapers {
+    fn add(&mut self, academic_paper: AcademicPaper) -> () {
+        self.academic_paper_list.push(academic_paper);
+    }
+
+    fn print(&self) -> String {
+        let mut output = "".to_string();
+        self.academic_paper_list.iter().for_each(|academic_paper| {
+            output.push_str(&academic_paper.to_string());
+        });
+        output
+    }
 }
 
 pub struct YoutubeVideo {
@@ -341,7 +477,7 @@ impl ResourceList<YoutubeVideo> for YoutubeVideos {
 pub struct TEDTalk {
     pub resource_details: Resource,
     pub url: String,
-    pub speaker: Creator,
+    pub speaker: String,
 }
 
 impl New<TEDTalk> for TEDTalk {
@@ -375,12 +511,70 @@ impl New<TEDTalk> for TEDTalk {
                         .expect("Failed to get TED Talk's zotero local link"),
                     creators: item.creators.clone(),
                 },
-                url: item.url.clone().expect("Article url not found"),
-                speaker: item.creators[0].clone(),
+                url: item.url.clone().expect("TED talk url not found"),
+                speaker: item.creators[0]
+                    .first_name
+                    .clone()
+                    .expect("couldn't get TED speaker first name")
+                    + " "
+                    + &item.creators[0]
+                        .last_name
+                        .clone()
+                        .expect("couldn't get TED Speaker last name"),
             })
         } else {
             None
         }
+    }
+}
+
+impl fmt::Display for TEDTalk {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        let mut template_file =
+            File::open("Resource/TEDTalk.md").expect("Failed to open TED Talk template file");
+        let mut ted_talk_template = String::new();
+
+        template_file
+            .read_to_string(&mut ted_talk_template)
+            .expect("failed to parse TED Talk Video template file");
+
+        write!(
+            f,
+            r##"{}"##,
+            ted_talk_template
+                .replace("{{id}}", &self.resource_details.id)
+                .replace("{{full_title}}", &self.resource_details.full_title)
+                .replace(
+                    "{{zotero_local_link}}",
+                    &self.resource_details.zotero_local_link
+                )
+                .replace(
+                    "{{zotero_cloud_link}}",
+                    &self.resource_details.zotero_cloud_link
+                )
+                .replace("{{speaker}}", &format!("[[{}]]", &self.speaker))
+                .replace("{{tags}}", &display_tags(&self.resource_details.tags))
+                .replace("{{notes}}", &display_notes(&self.resource_details.notes))
+                .replace("{{url}}", &self.url)
+        )
+    }
+}
+
+pub struct TEDTalks {
+    pub ted_talk_list: Vec<TEDTalk>,
+}
+
+impl ResourceList<TEDTalk> for TEDTalks {
+    fn add(&mut self, ted_talk: TEDTalk) -> () {
+        self.ted_talk_list.push(ted_talk);
+    }
+
+    fn print(&self) -> String {
+        let mut output = "".to_string();
+        self.ted_talk_list.iter().for_each(|ted_talk: &TEDTalk| {
+            output.push_str(&ted_talk.to_string());
+        });
+        output
     }
 }
 

@@ -64,7 +64,7 @@
       "Normalize": false,
       "exportFileData": false,
       "exportNotes": true,
-      "keepUpdated": true
+      "keepUpdated": false
     },
     "preferences": {
       "DOIandURL": "both",
@@ -180,7 +180,7 @@
       "title": "japanese indie rock songs to listen after another tiring day #2 | playlist",
       "uri": "http://zotero.org/users/8012208/items/22DT5SMB",
       "url": "https://www.youtube.com/watch?v=Ehy0ZQ6sN0k",
-      "version": 122
+      "version": 135
     },
     {
       "abstractNote": "Sir Ken Robinson makes an entertaining and profoundly moving case for creating an education system that nurtures (rather than undermines) creativity.",
@@ -215,7 +215,7 @@
       "title": "Do schools kill creativity?",
       "uri": "http://zotero.org/users/8012208/items/35HNSTKR",
       "url": "https://www.ted.com/talks/sir_ken_robinson_do_schools_kill_creativity",
-      "version": 120
+      "version": 133
     },
     {
       "abstractNote": "The poem\"Gojūon\"[五十音]was made by KITAHARA, Hakushū.\n[北原白秋](1885-1942)\nIt is known as \"Amenbo no uta\" and often used for Japanese voice training.\n[meaning] http://howtolearn.jp/japanese/amenbo/\n[simple ver.] http://youtu.be/IjdG62R1FmQ\n---\namenbo akaina A-I-U-E-O\nukimoni koebimo oyoideru\nkakinoki kurinoki KA-KI-KU-KE-KO\nkitsutsuki kotsu kotsu karekeyaki\nsasage ni su wo kake SA-SHI-SU-SE-SO\nsono uo asase de tachimashita\ntachimasho rappa de TA-CHI-TSU-TE-TO\ntotetote tattato tobitatta\nnamekuji noronoro NA-NI-NU-NE-NO\nnando ni numette nani nebaru\nhatopoppo horohoro HA-HI-FU-HE-HO\nhinata no oheya nya fue wo fuku\nmaimai nejimaki MA-MI-MU-ME-MO\nume no mi ochite mo mi mo shimai\nyakiguri yudeguri YA-I-YU-E-YO\nyamada ni hi no tsuku yoi no ie\nraicho samukaro RA-RI-RU-RE-RO\nrenge ga saitara ruri no tori\nwaiwai wasshoi WA-WI-U-WE-WO\nuekiya idogae omatsuri da",
@@ -307,7 +307,7 @@
       "title": "Poem for Japanese voice training \"Amenbo no uta\"",
       "uri": "http://zotero.org/users/8012208/items/37QVDF37",
       "url": "https://www.youtube.com/watch?v=uCA_zIOKOJk",
-      "version": 120
+      "version": 133
     },
     {
       "accessDate": "2021-06-17T10:02:02Z",
@@ -380,7 +380,37 @@
       "title": "My ethical beliefs. In this post I will explain and argue… | by Jeroen Willems | Medium",
       "uri": "http://zotero.org/users/8012208/items/3E9UUDNR",
       "url": "https://sentientlentils.medium.com/my-ethical-beliefs-de1e612a2083",
-      "version": 121
+      "version": 134
+    },
+    {
+      "abstractNote": "Bill Evans on the Creative Process and Self-Teaching\nConversation With His Brother Harry, 1966\n\nSongs appeared:\n0:00 Spartacus Love Theme (aka Emily)\n13:06 I Like New York in June, How About You?\n17:53 Star Eyes (Analyzing the Melody and Harmonics)\n22:07 Star Eyes (Full Song)\n40:52 Very Early\n42:15 Time Remembered\n43:07 My Bells\n\n“I believe that all people are in possession of what might be called a universal musical mind. Any true music speaks with this universal mind, to the universal mind in all people. The understanding that results will vary only in so far as people have or have not been conditioned to the various styles of music in which the universal mind speaks. Consequently, often some effort and exposure is necessary in order to understand some of the music coming from a different period or a different culture than that to which the listener has been conditioned. I do not agree that the layman’s opinion is less of a valid judgement of music than that of the professional musician. In fact, I would often rely more on the judgement of a sensitive layman than that of a professional, since the professional, because of his constant involvement with the mechanics of music, must fight to preserve the naivety that the layman already possesses.“\n\nIn 1966, legendary jazz pianist Bill Evans (August 16, 1929–September 15, 1980) sat down with his composer brother, Harry Evans, for an intense and deeply insightful conversation later released as Universal Mind of Bill Evans: The Creative Process and Self-Teaching. From filmmaker William Meier comes this gorgeous cinematic adaptation of Evans’s thoughts on the autodidactic quality of creativity and the value of working at the intersection of clarity, complexity, and spontaneity.\nThe whole process of learning the facility of being able to play jazz is to take these problems from the outer level in, one by one, and to stay with it at a very intense, conscious-concentration level until that process becomes secondary and subconscious. Now, when that becomes subconscious, then you can begin concentrating on that next problem, which will allow you to do a little bit more.\n\nI don’t consider myself as talented as many people but in some ways that was an advantage because I didn’t have a great facility immediately so I had to be more analytical and in a way — that forced me to build something.\n\nMost people just don’t realize the immensity of the problem and, either because they can’t conquer it immediately, think that they haven’t got the ability, or they’re so impatient to conquer it that they never do see it through. If you do understand the problem then you can enjoy your whole trip through.\n\nPeople tend to approximate the product rather than attacking it in a realistic, true way at any elementary level — regardless of how elementary — but it must be entirely true and entirely real and entirely accurate. They would rather approximate the entire problem than to take a small part of it and be real and true about it. To approximate the whole thing in a vague way gives you a feeling that you’ve more or less touched the thing, but in this way you just lead yourself toward confusion and ultimately you’re going to get so confused that you’ll never find your way out.\n\nIt is true of any subject that the person that succeeds in anything has the realistic viewpoint at the beginning and [knows] that the problem is large and that he has to take it a step at a time and that he has to enjoy the step-by-step learning procedure. They’re trying to do a thing in a way that is so general [that] they can’t possibly build on that. If they build on that, they’re building on top of confusion and vagueness and they can’t possibly progress. If you try to approximate something that is very advanced and don’t know what you’re doing, you can’t advance.",
+      "accessDate": "2021-07-01T22:46:20Z",
+      "attachments": [],
+      "citationKey": "BillEvansArchiveUniversalMindBill",
+      "citekey": "BillEvansArchiveUniversalMindBill",
+      "creators": [
+        {
+          "creatorType": "director",
+          "name": "BillEvansArchive"
+        }
+      ],
+      "dateAdded": "2021-07-01T22:46:21Z",
+      "dateModified": "2021-07-01T22:46:21Z",
+      "itemID": 172,
+      "itemKey": "499Y6BND",
+      "itemType": "videoRecording",
+      "key": "499Y6BND",
+      "libraryCatalog": "YouTube",
+      "libraryID": 1,
+      "notes": [],
+      "relations": [],
+      "runningTime": "44:15",
+      "select": "zotero://select/library/items/499Y6BND",
+      "tags": [],
+      "title": "Universal Mind of Bill Evans (1966 Documentary)",
+      "uri": "http://zotero.org/users/8012208/items/499Y6BND",
+      "url": "https://www.youtube.com/watch?v=QwXAqIaUahI",
+      "version": 135
     },
     {
       "abstractNote": "Is this book for you? How meta-rationality can level up your work in science, technology, and engineering.",
@@ -467,7 +497,143 @@
       "title": "Meta-rationality: An introduction | Meta-rationality",
       "uri": "http://zotero.org/users/8012208/items/67C8R45S",
       "url": "https://metarationality.com/introduction",
-      "version": 121
+      "version": 134
+    },
+    {
+      "attachments": [
+        {
+          "dateAdded": "2021-06-26T06:12:50Z",
+          "dateModified": "2021-06-26T06:12:50Z",
+          "itemType": "attachment",
+          "path": "/var/home/sashin/Zotero/zotfile attachments/Book/Willinsky/Willinsky (2006) The access principle.pdf",
+          "relations": [],
+          "tags": [],
+          "title": "Willinsky (2006) The access principle.pdf",
+          "uri": "http://zotero.org/users/8012208/items/TJBSUIZC"
+        },
+        {
+          "dateAdded": "2021-06-26T09:08:53Z",
+          "dateModified": "2021-06-26T09:08:53Z",
+          "itemType": "attachment",
+          "path": "/var/home/sashin/Documents/projects/mdnotes/willinskyAccessPrincipleCase2006-zotero.md",
+          "relations": [],
+          "tags": [],
+          "title": "willinskyAccessPrincipleCase2006-zotero.md",
+          "uri": "http://zotero.org/users/8012208/items/L5YMHBUL"
+        },
+        {
+          "dateAdded": "2021-06-26T09:09:12Z",
+          "dateModified": "2021-06-26T09:09:12Z",
+          "itemType": "attachment",
+          "path": "/var/home/sashin/Documents/projects/mdnotes/willinskyAccessPrincipleCase2006-zotero.md",
+          "relations": [],
+          "tags": [],
+          "title": "willinskyAccessPrincipleCase2006-zotero.md",
+          "uri": "http://zotero.org/users/8012208/items/JWJQGZ4X"
+        }
+      ],
+      "citationKey": "Willinsky2006AccessPrincipleCase",
+      "citekey": "Willinsky2006AccessPrincipleCase",
+      "creators": [
+        {
+          "creatorType": "author",
+          "firstName": "John",
+          "lastName": "Willinsky"
+        }
+      ],
+      "date": "2006",
+      "dateAdded": "2021-06-26T06:12:39Z",
+      "dateModified": "2021-06-26T06:12:39Z",
+      "itemID": 48,
+      "itemKey": "6ZHGAPEJ",
+      "itemType": "book",
+      "key": "6ZHGAPEJ",
+      "libraryCatalog": "Google Scholar",
+      "libraryID": 1,
+      "notes": [],
+      "publisher": "MIT press Cambridge, MA",
+      "relations": [],
+      "select": "zotero://select/library/items/6ZHGAPEJ",
+      "shortTitle": "The access principle",
+      "tags": [],
+      "title": "The access principle: The case for open access to research and scholarship",
+      "uri": "http://zotero.org/users/8012208/items/6ZHGAPEJ",
+      "version": 123,
+      "volume": "559"
+    },
+    {
+      "attachments": [
+        {
+          "dateAdded": "2021-06-26T06:13:14Z",
+          "dateModified": "2021-06-26T06:13:18Z",
+          "itemType": "attachment",
+          "path": "/var/home/sashin/Zotero/zotfile attachments/Book/Suber/Suber (2007) Open access overview2.pdf",
+          "relations": [],
+          "tags": [],
+          "title": "Suber (2007) Open access overview.pdf",
+          "uri": "http://zotero.org/users/8012208/items/H2DIVA5Q"
+        }
+      ],
+      "citationKey": "Suber2007OpenAccessOverviewa",
+      "citekey": "Suber2007OpenAccessOverviewa",
+      "creators": [
+        {
+          "creatorType": "author",
+          "firstName": "Peter",
+          "lastName": "Suber"
+        }
+      ],
+      "date": "2007",
+      "dateAdded": "2021-06-26T06:13:10Z",
+      "dateModified": "2021-06-26T06:13:10Z",
+      "itemID": 53,
+      "itemKey": "8BJPIVXT",
+      "itemType": "book",
+      "key": "8BJPIVXT",
+      "libraryCatalog": "Google Scholar",
+      "libraryID": 1,
+      "notes": [],
+      "relations": [],
+      "select": "zotero://select/library/items/8BJPIVXT",
+      "tags": [],
+      "title": "Open access overview",
+      "uri": "http://zotero.org/users/8012208/items/8BJPIVXT",
+      "version": 124
+    },
+    {
+      "accessDate": "2021-07-01T22:24:31Z",
+      "attachments": [],
+      "citationKey": "JenGunterWhat",
+      "citekey": "JenGunterWhat",
+      "creators": [],
+      "dateAdded": "2021-07-01T22:24:31Z",
+      "dateModified": "2021-07-01T22:24:31Z",
+      "itemID": 170,
+      "itemKey": "8NTWV4VR",
+      "itemType": "webpage",
+      "key": "8NTWV4VR",
+      "libraryID": 1,
+      "notes": [
+        {
+          "dateAdded": "2021-07-01T22:26:16Z",
+          "dateModified": "2021-07-01T22:26:20Z",
+          "itemType": "note",
+          "key": "Z8RXEHYG",
+          "note": "<p>T</p>",
+          "parentItem": "8NTWV4VR",
+          "relations": {},
+          "tags": [],
+          "uri": "http://zotero.org/users/8012208/items/Z8RXEHYG",
+          "version": 131
+        }
+      ],
+      "relations": [],
+      "select": "zotero://select/library/items/8NTWV4VR",
+      "tags": [],
+      "title": "Jen Gunter: What's normal anxiety -- and what's an anxiety disorder? | TED Talk",
+      "uri": "http://zotero.org/users/8012208/items/8NTWV4VR",
+      "url": "https://www.ted.com/talks/jen_gunter_what_s_normal_anxiety_and_what_s_an_anxiety_disorder",
+      "version": 135
     },
     {
       "ISBN": "978-0-241-31094-6",
@@ -562,7 +728,7 @@
       "tags": [],
       "title": "SCIENCE OF CAN AND CAN'T: a physicist's journey through the land of counterfactuals.",
       "uri": "http://zotero.org/users/8012208/items/CC7MF6HY",
-      "version": 120
+      "version": 133
     },
     {
       "abstractNote": "An introduction to meta-rationality: ways of using rational systems more effectively by understanding how they relate to their contexts.",
@@ -602,7 +768,7 @@
       "title": "In the Cells of the Eggplant | Meta-rationality",
       "uri": "http://zotero.org/users/8012208/items/CZLRHX5N",
       "url": "https://metarationality.com/",
-      "version": 122
+      "version": 135
     },
     {
       "ISBN": "978-0-7139-9061-4",
@@ -731,7 +897,7 @@
       ],
       "title": "The fabric of reality: the science of parallel universes-- and its implications",
       "uri": "http://zotero.org/users/8012208/items/D3EWRC5Y",
-      "version": 120
+      "version": 133
     },
     {
       "accessDate": "2021-06-20T01:05:55Z",
@@ -757,8 +923,8 @@
           "uri": "http://zotero.org/users/8012208/items/EE4NSRAG"
         }
       ],
-      "citationKey": "OpeningDavidKrakauera",
-      "citekey": "OpeningDavidKrakauera",
+      "citationKey": "OpeningDavidKrakauer",
+      "citekey": "OpeningDavidKrakauer",
       "creators": [],
       "dateAdded": "2021-06-20T01:05:56Z",
       "dateModified": "2021-06-20T01:05:56Z",
@@ -774,7 +940,7 @@
       "title": "Opening + David Krakauer | How Darwinians Count the World | NUMEROUS NUMEROSITY 2021 - YouTube",
       "uri": "http://zotero.org/users/8012208/items/DIEHLTLY",
       "url": "https://www.youtube.com/watch?v=MwsZXhv9dHc&t=4268s",
-      "version": 121
+      "version": 134
     },
     {
       "accessDate": "2021-06-11T04:50:00Z",
@@ -827,7 +993,7 @@
       "title": "The emotional dog and its rational tail: a social intuitionist approach to moral judgment - PubMed",
       "uri": "http://zotero.org/users/8012208/items/EL7BDMH8",
       "url": "https://pubmed.ncbi.nlm.nih.gov/11699120/",
-      "version": 121
+      "version": 134
     },
     {
       "accessDate": "2021-06-26T21:48:18Z",
@@ -864,7 +1030,7 @@
       "title": "Updates - Easy Rust",
       "uri": "http://zotero.org/users/8012208/items/EUJ5K7NI",
       "url": "https://dhghomon.github.io/easy_rust/",
-      "version": 122
+      "version": 135
     },
     {
       "accessDate": "2021-06-17T03:10:37Z",
@@ -920,7 +1086,7 @@
       "title": "Physics animations and film clips: Physclips.",
       "uri": "http://zotero.org/users/8012208/items/F9DGZS8Y",
       "url": "https://www.animations.physics.unsw.edu.au/",
-      "version": 121
+      "version": 134
     },
     {
       "ISBN": "978-0-7139-9274-8",
@@ -1061,7 +1227,7 @@
       ],
       "title": "The beginning of infinity: explanations that transform the world",
       "uri": "http://zotero.org/users/8012208/items/GBXJ9YRP",
-      "version": 120
+      "version": 133
     },
     {
       "accessDate": "2021-06-09T11:42:46Z",
@@ -1114,7 +1280,7 @@
       "title": "Val on Programming: Datomic: Event Sourcing without the hassle",
       "uri": "http://zotero.org/users/8012208/items/HE4T359Q",
       "url": "https://vvvvalvalval.github.io/posts/2018-11-12-datomic-event-sourcing-without-the-hassle.html#how_event_sourcing_is_usually_done",
-      "version": 120
+      "version": 133
     },
     {
       "accessDate": "2021-06-20T01:05:55Z",
@@ -1140,8 +1306,8 @@
           "uri": "http://zotero.org/users/8012208/items/3RXK34MJ"
         }
       ],
-      "citationKey": "OpeningDavidKrakauer",
-      "citekey": "OpeningDavidKrakauer",
+      "citationKey": "OpeningDavidKrakauera",
+      "citekey": "OpeningDavidKrakauera",
       "creators": [],
       "dateAdded": "2021-06-20T01:05:55Z",
       "dateModified": "2021-06-20T01:05:55Z",
@@ -1157,7 +1323,7 @@
       "title": "Opening + David Krakauer | How Darwinians Count the World | NUMEROUS NUMEROSITY 2021 - YouTube",
       "uri": "http://zotero.org/users/8012208/items/M8LKECMI",
       "url": "https://www.youtube.com/watch?v=MwsZXhv9dHc&t=4268s",
-      "version": 121
+      "version": 134
     },
     {
       "abstractNote": "Critics of scientific reform maintain that transparency comes at the cost of speed. What can disciplines of science learn from each other to break free of this crisis and expand our universe of knowledge?",
@@ -1280,6 +1446,65 @@
       "uri": "http://zotero.org/users/8012208/items/MD5DRNFV",
       "url": "https://worksinprogress.co/issue/the-speed-of-science/",
       "version": 120
+    },
+    {
+      "attachments": [
+        {
+          "dateAdded": "2021-06-26T06:12:44Z",
+          "dateModified": "2021-06-26T06:12:44Z",
+          "itemType": "attachment",
+          "path": "/var/home/sashin/Zotero/zotfile attachments/Book/Suber/Suber (2007) Open access overview.pdf",
+          "relations": [],
+          "tags": [],
+          "title": "Suber (2007) Open access overview.pdf",
+          "uri": "http://zotero.org/users/8012208/items/HM6M9IGE"
+        },
+        {
+          "dateAdded": "2021-06-26T09:08:46Z",
+          "dateModified": "2021-06-26T09:08:46Z",
+          "itemType": "attachment",
+          "path": "/var/home/sashin/Documents/projects/mdnotes/suberOpenAccessOverview2007-zotero.md",
+          "relations": [],
+          "tags": [],
+          "title": "suberOpenAccessOverview2007-zotero.md",
+          "uri": "http://zotero.org/users/8012208/items/I6AWWSTB"
+        },
+        {
+          "dateAdded": "2021-06-26T09:09:09Z",
+          "dateModified": "2021-06-26T09:09:09Z",
+          "itemType": "attachment",
+          "path": "/var/home/sashin/Documents/projects/mdnotes/suberOpenAccessOverview2007-zotero.md",
+          "relations": [],
+          "tags": [],
+          "title": "suberOpenAccessOverview2007-zotero.md",
+          "uri": "http://zotero.org/users/8012208/items/CUGPWTKR"
+        }
+      ],
+      "citationKey": "Suber2007OpenAccessOverview",
+      "citekey": "Suber2007OpenAccessOverview",
+      "creators": [
+        {
+          "creatorType": "author",
+          "firstName": "Peter",
+          "lastName": "Suber"
+        }
+      ],
+      "date": "2007",
+      "dateAdded": "2021-06-26T06:12:39Z",
+      "dateModified": "2021-06-26T06:12:39Z",
+      "itemID": 47,
+      "itemKey": "MNNSBWFF",
+      "itemType": "book",
+      "key": "MNNSBWFF",
+      "libraryCatalog": "Google Scholar",
+      "libraryID": 1,
+      "notes": [],
+      "relations": [],
+      "select": "zotero://select/library/items/MNNSBWFF",
+      "tags": [],
+      "title": "Open access overview",
+      "uri": "http://zotero.org/users/8012208/items/MNNSBWFF",
+      "version": 124
     },
     {
       "ISBN": "978-1-59030-057-2",
@@ -1409,7 +1634,7 @@
       "tags": [],
       "title": "The way of the Bodhisattva: a translation of the Bodhicharyavatara",
       "uri": "http://zotero.org/users/8012208/items/NLKYHXKS",
-      "version": 120
+      "version": 133
     },
     {
       "DOI": "10.1073/pnas.48.1.1",
@@ -1462,7 +1687,7 @@
       "title": "AN EVALUATION OF STUDIES ON ULTRASTRUCTURE OF TONOPLAST IN SIEVE ELEMENTS",
       "uri": "http://zotero.org/users/8012208/items/RYAD32IX",
       "url": "http://www.pnas.org/cgi/doi/10.1073/pnas.48.1.1",
-      "version": 122,
+      "version": 135,
       "volume": "48"
     },
     {
@@ -1520,7 +1745,7 @@
       "title": "Zotero -> zotfile -> mdnotes -> obsidian -> dataview Workflow - Share & showcase",
       "uri": "http://zotero.org/users/8012208/items/S792I8AT",
       "url": "https://forum.obsidian.md/t/zotero-zotfile-mdnotes-obsidian-dataview-workflow/15536",
-      "version": 120
+      "version": 133
     },
     {
       "abstractNote": "Both 中 (naka) and 内 (uchi) often translate to ''inside,'' but they don't refer to quite the same ''inside.'' You didn't realize there could be more than one inside? You're not alone! Read on to explore the differences with us!",
@@ -1603,7 +1828,7 @@
       "title": "中 vs 内: The Difference Between These Two Japanese Words for ''Inside''",
       "uri": "http://zotero.org/users/8012208/items/T3PNH8UM",
       "url": "https://www.tofugu.com/japanese/naka-vs-uchi/",
-      "version": 121
+      "version": 134
     },
     {
       "abstractNote": "What are the biggest issues humanity faces and how can we solve them?",
@@ -1706,7 +1931,7 @@
       "title": "The world is getting better for humans. But what are we neglecting?",
       "uri": "http://zotero.org/users/8012208/items/T6QWTMTS",
       "url": "https://sentientlentils.medium.com/9-facts-that-will-change-the-way-you-look-at-the-world-1-2-8184a24346da",
-      "version": 121
+      "version": 134
     },
     {
       "accessDate": "2021-06-20T01:05:35Z",
@@ -1779,7 +2004,7 @@
       "title": "COMPLEXITY (Lecture- 02) Simple Rugged and Dancing Landscapes - YouTube",
       "uri": "http://zotero.org/users/8012208/items/U2Q5NRPM",
       "url": "https://www.youtube.com/watch?v=doqeXBoFiGU",
-      "version": 121
+      "version": 134
     },
     {
       "ISBN": "978-3-540-35893-0 978-3-540-35902-9",
@@ -1986,7 +2211,7 @@
       "title": "Karl Popper’s Critical Rationalism in Agile Software Development",
       "uri": "http://zotero.org/users/8012208/items/V8SJUHWL",
       "url": "http://link.springer.com/10.1007/11787181_26",
-      "version": 120,
+      "version": 133,
       "volume": "4068"
     },
     {
@@ -2053,7 +2278,7 @@
         }
       ],
       "dateAdded": "2021-06-23T01:13:39Z",
-      "dateModified": "2021-06-23T01:13:39Z",
+      "dateModified": "2021-07-02T04:34:06Z",
       "itemID": 43,
       "itemKey": "W25QQ7BL",
       "itemType": "videoRecording",
@@ -2064,15 +2289,73 @@
       "relations": [],
       "runningTime": "3:53",
       "select": "zotero://select/library/items/W25QQ7BL",
-      "tags": [],
+      "tags": [
+        {
+          "tag": "resource/youtube/documentary"
+        },
+        {
+          "tag": "topic/science/biology/zoology"
+        }
+      ],
       "title": "Mother Tiger Learns to Care for Cubs | David Attenborough | Tiger Spy in the Jungle | BBC Earth",
       "uri": "http://zotero.org/users/8012208/items/W25QQ7BL",
       "url": "https://www.youtube.com/watch?v=kXmqwRj0o4E&list=PL50KW6aT4Ugxzsb59IWy_cfly4euzavCY",
-      "version": 121
+      "version": 140
     },
     {
       "ISBN": "978-1-5428-6650-7",
-      "attachments": [],
+      "attachments": [
+        {
+          "dateAdded": "2021-06-26T09:08:39Z",
+          "dateModified": "2021-06-26T09:08:39Z",
+          "itemType": "attachment",
+          "path": "/var/home/sashin/Documents/projects/mdnotes/ahrensHowTakeSmart2017-zotero.md",
+          "relations": [],
+          "tags": [],
+          "title": "ahrensHowTakeSmart2017-zotero.md",
+          "uri": "http://zotero.org/users/8012208/items/A8MXY8TM"
+        },
+        {
+          "dateAdded": "2021-06-26T09:09:05Z",
+          "dateModified": "2021-06-26T09:09:05Z",
+          "itemType": "attachment",
+          "path": "/var/home/sashin/Documents/projects/mdnotes/Ahrens(2017)HowTakeSmart-zotero.md",
+          "relations": [],
+          "tags": [],
+          "title": "Ahrens(2017)HowTakeSmart-zotero.md",
+          "uri": "http://zotero.org/users/8012208/items/CFD8BDF2"
+        },
+        {
+          "dateAdded": "2021-06-26T09:19:58Z",
+          "dateModified": "2021-06-26T09:19:58Z",
+          "itemType": "attachment",
+          "path": "/var/home/sashin/Documents/projects/mdnotes/Ahrens(2017)HowTakeSmart.md",
+          "relations": [],
+          "tags": [],
+          "title": "Ahrens(2017)HowTakeSmart.md",
+          "uri": "http://zotero.org/users/8012208/items/I8MS2AR4"
+        },
+        {
+          "dateAdded": "2021-06-26T09:35:20Z",
+          "dateModified": "2021-06-26T09:35:20Z",
+          "itemType": "attachment",
+          "path": "/var/home/sashin/Documents/projects/mdnotes2/Ahrens(2017)HowTakeSmart.md",
+          "relations": [],
+          "tags": [],
+          "title": "Ahrens(2017)HowTakeSmart.md",
+          "uri": "http://zotero.org/users/8012208/items/HI5LXTQT"
+        },
+        {
+          "dateAdded": "2021-06-26T09:39:59Z",
+          "dateModified": "2021-06-26T09:39:59Z",
+          "itemType": "attachment",
+          "path": "/var/home/sashin/Documents/notes/Resources/mdnotes/Ahrens2017HowTakeSmart.md",
+          "relations": [],
+          "tags": [],
+          "title": "Ahrens2017HowTakeSmart.md",
+          "uri": "http://zotero.org/users/8012208/items/T7R5LWF5"
+        }
+      ],
       "citationKey": "Ahrens2017HowTakeSmart",
       "citekey": "Ahrens2017HowTakeSmart",
       "creators": [
@@ -2093,6 +2376,42 @@
       "libraryCatalog": "Gemeinsamer Bibliotheksverbund ISBN",
       "libraryID": 1,
       "notes": [
+        {
+          "dateAdded": "2021-06-25T01:56:38Z",
+          "dateModified": "2021-06-25T01:56:38Z",
+          "itemType": "note",
+          "key": "FPINJYF5",
+          "note": "",
+          "parentItem": "X68UFXBW",
+          "relations": {},
+          "tags": [],
+          "uri": "http://zotero.org/users/8012208/items/FPINJYF5",
+          "version": 62
+        },
+        {
+          "dateAdded": "2021-06-26T09:52:34Z",
+          "dateModified": "2021-06-26T09:52:34Z",
+          "itemType": "note",
+          "key": "R8VLACLV",
+          "note": "",
+          "parentItem": "X68UFXBW",
+          "relations": {},
+          "tags": [],
+          "uri": "http://zotero.org/users/8012208/items/R8VLACLV",
+          "version": 92
+        },
+        {
+          "dateAdded": "2021-06-09T01:47:50Z",
+          "dateModified": "2021-06-25T03:00:30Z",
+          "itemType": "note",
+          "key": "78AKMKD9",
+          "note": "<p>### Hello everyone,</p>\n<p>how are you</p>\n<p>this is a note</p>\n<p>---</p>\n<p>here are more notes</p>\n<p>nah it's the same note</p>\n<p>okay...</p>\n<p>~~this is crossed out~~</p>",
+          "parentItem": "X68UFXBW",
+          "relations": {},
+          "tags": [],
+          "uri": "http://zotero.org/users/8012208/items/78AKMKD9",
+          "version": 95
+        },
         {
           "dateAdded": "2021-06-30T08:47:37Z",
           "dateModified": "2021-06-30T08:49:08Z",
@@ -2128,6 +2447,30 @@
           "tags": [],
           "uri": "http://zotero.org/users/8012208/items/CNV38KZS",
           "version": 114
+        },
+        {
+          "dateAdded": "2021-06-28T06:30:25Z",
+          "dateModified": "2021-06-28T06:30:33Z",
+          "itemType": "note",
+          "key": "FY9F3RQ2",
+          "note": "<p>Alright, let's see if this works.</p>",
+          "parentItem": "X68UFXBW",
+          "relations": {},
+          "tags": [],
+          "uri": "http://zotero.org/users/8012208/items/FY9F3RQ2",
+          "version": 119
+        },
+        {
+          "dateAdded": "2021-06-28T06:26:17Z",
+          "dateModified": "2021-06-28T06:26:44Z",
+          "itemType": "note",
+          "key": "SNZQJLSB",
+          "note": "<p>For some reason, only one note was showing. Let's see if it's a problem with the first note showing or a problem with everything except one</p>",
+          "parentItem": "X68UFXBW",
+          "relations": {},
+          "tags": [],
+          "uri": "http://zotero.org/users/8012208/items/SNZQJLSB",
+          "version": 118
         }
       ],
       "numPages": "170",
@@ -2138,18 +2481,60 @@
       "shortTitle": "How to take smart notes",
       "tags": [
         {
+          "tag": "resource/book"
+        },
+        {
           "tag": "topic/knowledge-management/notetaking"
         },
         {
           "tag": "topic/practical"
-        },
-        {
-          "tag": "resource/book"
         }
       ],
       "title": "How to take smart notes: one simple technique to boost writing, learning and thinking: for students, academics and nonfiction book writers",
       "uri": "http://zotero.org/users/8012208/items/X68UFXBW",
-      "version": 111
+      "version": 133
+    },
+    {
+      "attachments": [
+        {
+          "dateAdded": "2021-06-26T06:13:41Z",
+          "dateModified": "2021-06-26T06:13:44Z",
+          "itemType": "attachment",
+          "path": "/var/home/sashin/Zotero/zotfile attachments/Book/Willinsky/Willinsky (2006) The access principle2.pdf",
+          "relations": [],
+          "tags": [],
+          "title": "Willinsky (2006) The access principle.pdf",
+          "uri": "http://zotero.org/users/8012208/items/2UYV4FM9"
+        }
+      ],
+      "citationKey": "Willinsky2006AccessPrincipleCasea",
+      "citekey": "Willinsky2006AccessPrincipleCasea",
+      "creators": [
+        {
+          "creatorType": "author",
+          "firstName": "John",
+          "lastName": "Willinsky"
+        }
+      ],
+      "date": "2006",
+      "dateAdded": "2021-06-26T06:13:10Z",
+      "dateModified": "2021-06-26T06:13:10Z",
+      "itemID": 54,
+      "itemKey": "ZKZVL7AV",
+      "itemType": "book",
+      "key": "ZKZVL7AV",
+      "libraryCatalog": "Google Scholar",
+      "libraryID": 1,
+      "notes": [],
+      "publisher": "MIT press Cambridge, MA",
+      "relations": [],
+      "select": "zotero://select/library/items/ZKZVL7AV",
+      "shortTitle": "The access principle",
+      "tags": [],
+      "title": "The access principle: The case for open access to research and scholarship",
+      "uri": "http://zotero.org/users/8012208/items/ZKZVL7AV",
+      "version": 123,
+      "volume": "559"
     }
   ],
   "version": {

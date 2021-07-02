@@ -14,7 +14,7 @@ pub struct Item {
     pub doi: Option<String>,
     pub title: Option<String>,
     #[serde(rename(serialize = "libraryCatalog", deserialize = "libraryCatalog"))]
-    pub source: Option<String>,
+    pub library_catalog: Option<String>,
     pub url: Option<String>,
     pub creators: Vec<Creator>,
     #[serde(rename(serialize = "ISBN", deserialize = "ISBN"))]
@@ -103,7 +103,7 @@ fn generate_item_string(item: &Item) -> String {
         generate_display("isbn_13", &item.isbn),
         generate_display("title", &item.title),
         generate_display("journal", &item.journal),
-        generate_display("source", &item.source),
+        generate_display("source", &item.library_catalog),
         generate_display("published_date", &item.published_date),
         generate_display("#title", &item.short_title),
         generate_display("Open in Zotero (library)", &item.select),

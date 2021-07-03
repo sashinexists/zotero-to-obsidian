@@ -4,6 +4,8 @@ use std::fmt::{self, Display};
 use std::fs::File;
 use std::io::Read;
 
+const TEMPLATE_PATH:&str = "Meta/Templates/Resource";
+
 pub trait ResourceList<T> {
     fn add(&mut self, resource: T) -> ();
     fn print(&self) -> String;
@@ -115,7 +117,7 @@ pub struct Book {
 impl fmt::Display for Book {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         let mut template_file =
-            File::open("Templates/Book.md").expect("Failed to open book template file");
+            File::open(&format!("{}/Book.md", TEMPLATE_PATH)).expect("Failed to open book template file");
         let mut book_template = String::new();
 
         template_file
@@ -253,7 +255,7 @@ impl New<Article> for Article {
 impl fmt::Display for Article {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         let mut template_file =
-            File::open("Templates/Article.md").expect("Failed to open article template file");
+            File::open(&format!("{}/Article.md", TEMPLATE_PATH)).expect("Failed to open article template file");
         let mut article_template = String::new();
 
         template_file
@@ -355,7 +357,7 @@ impl New<AcademicPaper> for AcademicPaper {
 
 impl fmt::Display for AcademicPaper {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        let mut template_file = File::open("Templates/AcademicPaper.md")
+        let mut template_file = File::open(&format!("{}/Academic Paper.md", TEMPLATE_PATH))
             .expect("Failed to open academic paper template file");
         let mut academic_paper_template = String::new();
 
@@ -471,7 +473,7 @@ fn get_youtube_query_string(url: &str) -> Option<String> {
 impl fmt::Display for YoutubeVideo {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         let mut template_file =
-            File::open("Templates/YoutubeVideo.md").expect("Failed to open article template file");
+            File::open(&format!("{}/Youtube Video.md", TEMPLATE_PATH)).expect("Failed to open article template file");
         let mut youtube_template = String::new();
 
         template_file
@@ -577,7 +579,7 @@ impl New<TEDTalk> for TEDTalk {
 impl fmt::Display for TEDTalk {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         let mut template_file =
-            File::open("Templates/TEDTalk.md").expect("Failed to open TED Talk template file");
+            File::open(&format!("{}/TED Talk.md", TEMPLATE_PATH)).expect("Failed to open TED Talk template file");
         let mut ted_talk_template = String::new();
 
         template_file

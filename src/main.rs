@@ -29,25 +29,25 @@ fn main() {
     references.populate(&zotero_data.items);
 
     //deletes existing Resource folder if it exists
-    if std::fs::metadata("Resource").is_ok() && std::fs::metadata("Resource").unwrap().is_dir() {
-        fs::remove_dir_all("Resource").expect("failed to removed directory");
-        println!("Deleted old resource folder and creating a new one");
+    if std::fs::metadata("Resources").is_ok() && std::fs::metadata("Resources").unwrap().is_dir() {
+        fs::remove_dir_all("Resources").expect("failed to removed directory");
+        println!("Deleted old Resources folder and creating a new one");
     } else {
-        println!("No Resource folder found - creating one now");
+        println!("No Resources folder found - creating one now");
     }
 
-    fs::create_dir("Resource").expect("failed to create resource directory");
-    fs::create_dir("Resource/Articles").expect("failed to create Resource/Articles directory");
-    fs::create_dir("Resource/AcademicPapers")
-        .expect("failed to create Resource/AcademicPapers directory");
-    fs::create_dir("Resource/Books").expect("failed to create Resource/Books directory");
-    fs::create_dir("Resource/TEDTalks").expect("failed to create Resource/TEDTalks directory");
-    fs::create_dir("Resource/YoutubeVideos")
-        .expect("failed to create resource/YoutubeVideos directory");
+    fs::create_dir("Resources").expect("failed to create resource directory");
+    fs::create_dir("Resources/Articles").expect("failed to create Articles directory");
+    fs::create_dir("Resources/Academic Papers")
+        .expect("failed to create AcademicPapers directory");
+    fs::create_dir("Resources/Books").expect("failed to create Books directory");
+    fs::create_dir("Resources/TED Talks").expect("failed to create TEDTalks directory");
+    fs::create_dir("Resources/Youtube Videos")
+        .expect("failed to create YoutubeVideos directory");
 
     references.articles.article_list.iter().for_each(|article| {
         fs::write(
-            &format!("Resource/Articles/{}.md", article.resource_details.id),
+            &format!("Resources/Articles/{}.md", article.resource_details.id),
             article.to_string(),
         )
         .expect("failed to create article notes");
@@ -55,7 +55,7 @@ fn main() {
 
     references.academic_papers.academic_paper_list.iter().for_each(|academic_paper| {
         fs::write(
-            &format!("Resource/AcademicPapers/{}.md", academic_paper.resource_details.id),
+            &format!("Resources/Academic Papers/{}.md", academic_paper.resource_details.id),
             academic_paper.to_string(),
         )
         .expect("failed to create academic paper notes");
@@ -63,7 +63,7 @@ fn main() {
 
     references.books.book_list.iter().for_each(|book| {
         fs::write(
-            &format!("Resource/Books/{}.md", book.resource_details.id),
+            &format!("Resources/Books/{}.md", book.resource_details.id),
             book.to_string(),
         )
         .expect("failed to create book notes");
@@ -71,7 +71,7 @@ fn main() {
 
     references.ted_talks.ted_talk_list.iter().for_each(|ted_talk| {
         fs::write(
-            &format!("Resource/TEDTalks/{}", ted_talk.resource_details.id),
+            &format!("Resources/TED Talks/{}.md", ted_talk.resource_details.id),
             ted_talk.to_string(),
         )
         .expect("failed to create TED Talk notes.md");
@@ -79,7 +79,7 @@ fn main() {
 
     references.youtube_videos.youtube_video_list.iter().for_each(|youtube_video| {
         fs::write(
-            &format!("Resource/YoutubeVideos/{}.md", youtube_video.resource_details.id),
+            &format!("Resources/Youtube Videos/{}.md", youtube_video.resource_details.id),
             youtube_video.to_string(),
         )
         .expect("failed to create Youtube video notes");

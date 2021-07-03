@@ -60,7 +60,7 @@ impl ReferenceList for References {
                             .add(Book::new(item).expect("failed to parse book"))
                     }
                 }
-                _ => println!("failed to get reference from item"),
+                _ => println!("{}", &format!("failed to get reference from {} of type {}", item.id, item.item_type)),
             })
     }
 

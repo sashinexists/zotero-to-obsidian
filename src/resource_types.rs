@@ -4,7 +4,10 @@ use std::fmt::{self, Display};
 use std::fs::File;
 use std::io::Read;
 
-const TEMPLATE_PATH:&str = "Meta/Templates/Resource";
+const TEMPLATE_PATH_DEV:&str = "Meta/Templates/Resource";
+const TEMPLATE_PATH_PROD:&str = "../Meta/Templates/Resource";
+
+const TEMPLATE_PATH:&str = TEMPLATE_PATH_PROD;
 
 pub trait ResourceList<T> {
     fn add(&mut self, resource: T) -> ();

@@ -1,9 +1,9 @@
 # Zotero to Obsidian script
 This is a script that takes a better bibtex JSON file exported by Zotero and generates an organised collection of reference notes in Obsidian
 
-In you obsidian vault have a hidden folder `./library`
+In you obsidian vault create a hidden folder `./library`
 
-In this `.library` folder export you better bibtex JSON file (select include notes and keep updated), name it "library.json".
+In this `.library` folder export your better bibtex JSON file (select include notes and keep updated), name it "library.json".
 
 Make sure that the built script is in the root directory of the vault (`copy /target/debug/zotero-to-obsidian`).
 
